@@ -1,26 +1,37 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Layout, Header, Navigation, Drawer, Content} from 'react-mdl';
+import Main from './components/main';
+import { Link } from 'react-router-dom';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <div className="demo-big-content">
+    <Layout>
+    <Header className="header-color" title={<Link style={{textDecoration: 'none', color: 'white'}} to="/">Henrik Fog Bunzel</Link>} scroll>
+        
+            <Navigation>
+                <Link to="/resume">Resume</Link>
+                <Link to="/cases">Cases</Link>
+                <Link to="/competencies">Competencies</Link>
+                <Link to="/contact">Contact</Link>
+            </Navigation>
+        </Header>
+        <Drawer title={<Link style={{textDecoration: 'none', color: 'black'}} to="/">Henrik Fog Bunzel</Link>}>
+            <Navigation>
+                <Link to="/resume">Resume</Link>
+                <Link to="/cases">Cases</Link>
+                <Link to="/competencies">Competencies</Link>
+                <Link to="/contact">Contact</Link>
+            </Navigation>
+        </Drawer>
+        <Content>
+            <div className="page-content" />
+            <Main/>
+        </Content>
+    </Layout>
+</div>
     );
   }
 }
